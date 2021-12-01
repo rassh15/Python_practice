@@ -1,4 +1,4 @@
-from pygame import mixer
+'''from pygame import mixer
 
 # Starting the mixer
 mixer.init()
@@ -32,3 +32,22 @@ while True:
 		# Stop the mixer
 		mixer.music.stop()
 		break
+'''
+
+import collections
+
+dd = collections.defaultdict(list)
+
+
+print(dd)
+
+dd['a'].append(3)
+dd['a'].append(4)
+dd['a'].append(6)
+dd['c'].append(3)
+dd['b'].append(3)
+
+
+
+
+# print('yes') if i == 'e' i for i in dd.keys()
