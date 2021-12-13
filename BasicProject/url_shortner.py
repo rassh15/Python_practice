@@ -44,6 +44,8 @@ def make_tiny(url):
 #     for tinyurl in map(make_tiny, sys.argv[1:]):                    
 #         print(tinyurl)
 
+#to run code with argument from command line
+#python url_shortener.py https://www.wikipedia.org/
 #above function is comment will only provide one url at at time
 
 def main():
