@@ -178,7 +178,7 @@ print(np.array_split(arr3,2)) # also use axis = 1 if needed
 
 # Searching
 # Search an array using where() method
-
+'''
 arrq = np.array([1, 2, 3, 4, 5, 4, 4])
 
 x = np.where(arrq == 4)
@@ -197,5 +197,71 @@ print(x3)
 
 print(x1)
 print(x2)
+'''
+# sort using np.sort(arr)
+
+#Filter
+'''
+arr = np.array([41, 42, 43, 44])
+x = [True, False, True, False]
+newarr = arr[x]
+print(newarr)
+
+filter_arr = []
+
+# go through each element in arr
+for element in arr:
+  # if the element is higher than 42, set the value to True, otherwise False:
+  if element > 42:
+    filter_arr.append(True)
+  else:
+    filter_arr.append(False)
+
+newarr1 = arr[filter_arr]
+#above thing can also achieve by filter_arr = arr > 42 or filter_arr = arr % 2 == 0
+print(filter_arr)
+print(newarr1)
+
+'''
+
+# random module
+
+'''
+from numpy import random
+
+print(random.randint(100)) # return one random from range 0 to 100
+# rand for float
+
+print(random.randint(100, size=(2,2,5))) # randin take size argument for array dimension
+# Same with rand
+
+# choice() methods return random from value from the given array
+print(random.choice([3, 5, 7, 9])) #size attribute also
+
+# data distributions using random( random module provide method to achive this)
+# here choice() method allow us to provide probablity for each number 
+print(random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(100)))
+
+# Random Permutations / arrangement of elements
+#using shuffle() in-place arrange and permutation() - returns a re-arranged array
+
+arr = np.array([1, 2, 3, 4, 5])
+random.shuffle(arr)
+print(arr)
+arrp = np.array([1, 2, 3, 4, 5])
+arrpermu = random.permutation(arr)
+print(arrpermu)
+
+# Normal Dirstribution
+
+x = random.normal(size=(2,5))
+print(x)
+# Binomial Distribution
+x=  random.binomial(n=10, p=0.5, size=10)
+
+
+
+
+'''
 
 
