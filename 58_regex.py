@@ -502,3 +502,65 @@ def camel_snake_case(str):
     print(snake_case)
 
 camel_snake_case('TheNameOfTheRoom')
+
+sft ="B1CD102354"
+
+
+import re
+
+patt = '[A-z]{2,}\d{3,}'
+print(re.search(patt,sft))
+'''
+B1CD102354:  is repeating → Invalid
+B1CDEF2354: Valid
+'''
+'''
+for _ in range(int(input())):
+    u = ''.join(sorted(input()))
+    try:
+        assert re.search(r'[A-Z]{2}', u)
+        assert re.search(r'\d\d\d', u)
+        assert not re.search(r'[^a-zA-Z0-9]', u)
+        assert not re.search(r'(.)\1', u)
+        assert len(u) == 10
+    except:
+        print('Invalid')
+    else:
+        print('Valid')
+    '''
+print()
+
+u = '4123356789123456'
+
+'''
+TESTER = re.compile(
+    r"^"
+    r"(?!.*(\d)(-?\1){3})"
+    r"[456]"
+    r"\d{3}"
+    r"(?:-?\d{4}){3}"
+    r"$")
+
+
+
+try:
+    assert re.search(r'^[456]', u)
+    assert re.search(r'[0-9]', u)
+    assert not re.search(r'[\s_]', u)
+    assert not re.search(r'^(\d)\1+$', u)
+    assert len(u) == 16
+except:
+    print('Invalid')
+else:
+    print('Valid')
+'''
+
+s = "> and then she told him she wouldn't settle for less than a Hawaiian pizza, and"
+#lookbehind (?<=)
+print(re.search(r'(?<![a-z])\d', 'geeksforgeeks14'))
+
+#loohahead (?=)
+print(re.search(r'\w(?=[0-9])', 'geeksforgeeks14'))
+
+#lookahead and lookbehind
+print(re.search(r'(?<=[a-z])\d(?=[0-9])', 'geeksforgeeks19'))

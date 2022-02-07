@@ -65,8 +65,4 @@ np.absolute(arr1,arr2)
 
 # E.g. The partial sum of [1, 2, 3, 4] would be [1, 1+2, 1+2+3, 1+2+3+4] = [1, 3, 6, 10].
 
-arr = np.array([3, 6, 9])
-
-x = np.lcm.reduce(arr)
-
-print(x)
+  

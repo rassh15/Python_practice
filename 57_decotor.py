@@ -186,3 +186,11 @@ def first_letter(word):
 
 print(first_letter('Hello World'))
 first_letter(['Not', 'A', 'String'])'''
+'''
+def wrapper(f):
+    def fun(l):
+        decorated_l = ['+91 {} {}'.format(n[-10: -5], n[-5:]) for n in l]
+        return f(decorated_l)
+    return fun
+
+    '''
