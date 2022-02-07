@@ -3,11 +3,13 @@ from django.shortcuts import render
 
 from datetime import date
 
+from numpy import identity
+
 all_post = [
     {
         "slug": "hike-in-the-mountains",
         "image": "mountains.jpg",
-        "author": "Maximilian",
+        "author": "Rashid",
         "date": date(2021, 7, 21),
         "title": "Mountain Hiking",
         "excerpt": "There's nothing like the views you get when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!",
@@ -26,7 +28,7 @@ all_post = [
     {
         "slug": "programming-is-fun",
         "image": "coding.jpg",
-        "author": "Maximilian",
+        "author": "Raheel",
         "date": date(2022, 3, 10),
         "title": "Programming Is Great!",
         "excerpt": "Did you ever spend hours searching that one error in your code? Yep - that's what happened to me yesterday...",
@@ -45,7 +47,7 @@ all_post = [
     {
         "slug": "into-the-woods",
         "image": "woods.jpg",
-        "author": "Maximilian",
+        "author": "Mxi",
         "date": date(2020, 8, 5),
         "title": "Nature At Its Best",
         "excerpt": "Nature is amazing! The amount of inspiration I get when walking in nature is incredible!",
@@ -74,7 +76,9 @@ def index(request):
     return render(request, "index.html", {"posts": latest_post})
 
 def posts(request):
-    return render(request, "all-post.html")
+    return render(request, "all-post.html",{"all_post": all_post})
 
 def post_detail(request,slug):
-    return render(request, "post-details.html")
+    identified_post = next(post for post in all_post if post['slug']==slug)
+    print(identified_post, ' ',slug)
+    return render(request, "post-details.html",{'identified_post': identified_post})

@@ -11,29 +11,21 @@ My Blog
 {% block content %}
 
     <section id="summary">
-        <h2> Post Title</h2>
+        <h2> {{identified_post.title}}</h2>
         <article>
-            <img src="/static/mountains.jpg" alt="Post Title" />
-            <address> By Rashid</address>
+            <img src="{{ '/static/'|add:identified_post.image }}" alt={{identified_post.title}} />
+            <address> By {{identified_post.author}}</address>
             <div>
-                Last updated on <time> May 10 2021</time>
+                Last updated on <time> {{identified_post.date}}</time>
             </div>
         </article>
     </section>
 
     <main>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aliquid iste non id esse unde consequuntur, dolore placeat autem odio hic incidunt soluta officiis temporibus, fugiat quas tempore rem officia?
+            {{identified_post.content | linebreaks}}
         </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aliquid iste non id esse unde consequuntur, dolore placeat autem odio hic incidunt soluta officiis temporibus, fugiat quas tempore rem officia?
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aliquid iste non id esse unde consequuntur, dolore placeat autem odio hic incidunt soluta officiis temporibus, fugiat quas tempore rem officia?
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aliquid iste non id esse unde consequuntur, dolore placeat autem odio hic incidunt soluta officiis temporibus, fugiat quas tempore rem officia?
-        </p>
+            
 
     </main>
 
