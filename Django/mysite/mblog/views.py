@@ -1,8 +1,9 @@
+from turtle import pos
 from django.shortcuts import render
 
 from datetime import date
 
-posts = [
+all_post = [
     {
         "slug": "hike-in-the-mountains",
         "image": "mountains.jpg",
@@ -61,10 +62,16 @@ posts = [
         """
     }
 ]
+def get_date(post):
+    return post['date']
+
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    sorted_post = sorted(all_post,key= get_date)
+
+    latest_post = sorted_post[-3:]
+    return render(request, "index.html", {"posts": latest_post})
 
 def posts(request):
     return render(request, "all-post.html")
