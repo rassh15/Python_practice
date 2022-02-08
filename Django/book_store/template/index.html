@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} All Books {% endblock %}
+
+{% block content %}
+
+<ul>
+    {% for book in books %}
+    <li><a href="{% url 'book_det' book.slug %}">{{ book.title }}</a>  (Rating: {{ book.rating}})
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
