@@ -11,7 +11,7 @@ class Book(models.Model):
         validators=[MinValueValidator(1),MaxValueValidator(5)])
     author = models.CharField(null=True,max_length=100)
     is_bestselling = models.BooleanField(default=False)
-    slug = models.SlugField(default="",editable=False ,null=False)#Harry Potter 1 _> harry-potter-1
+    slug = models.SlugField(default="", blank=True ,null=False)#Harry Potter 1 _> harry-potter-1
 
     def get_absolute_url(self):
         return reverse("book-det", args=[self.id])
