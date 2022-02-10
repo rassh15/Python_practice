@@ -18,4 +18,17 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = '__all__' #or spefify [] to  select specific fields
         # exclude = 
-        
+        labels = {
+            'user_name': "YOur name",
+            'review_text': "Your Review",
+            'rating': "Rating",
+        }
+
+        error_messages = {
+
+            "user_name":{
+                "required": "YOur name must not be empty",
+                "max_length": "Enter in limit"
+            }
+        }
+
