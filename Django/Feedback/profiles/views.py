@@ -4,30 +4,38 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from template.prof_form import ProfileForm
 from .models import UserProfile
+from django.views.generic.edit import CreateView
+
 
 # Create your views here.
 
-def store_file(file):
-    with open("temp/image.jpg","wb+") as dest:
-        for chunk in file.chunks():
-            dest.write(chunk)
+class CreateProfileView(CreateView):
+    template_name = "prof_create_profile.html"
+    model = UserProfile
+    fields = "__all__"
+    success_url = "/profiles"
 
-class CreateProfileView(View):
-    def get(self, request):
-        form = ProfileForm()
+# def store_file(file):
+#     with open("temp/image.jpg","wb+") as dest:
+#         for chunk in file.chunks():
+#             dest.write(chunk)
 
-        return render(request, "prof_create_profile.html",{
-            "form":form
-        })
+# class CreateProfileView(View):
+#     def get(self, request):
+#         form = ProfileForm()
 
-    def post(self, request):
-        submitted_form = ProfileForm(request.POST, request.FILES)
+#         return render(request, "prof_create_profile.html",{
+#             "form":form
+#         })
 
-        if submitted_form.is_valid():
-            profile = UserProfile(image=request.FILES["user_image"])
-            profile.save()
-            return HttpResponseRedirect("/profiles")
+#     def post(self, request):
+#         submitted_form = ProfileForm(request.POST, request.FILES)
 
-        return render(request, "prof_create_profile.html",{
-            "form":submitted_form
-        })
+#         if submitted_form.is_valid():
+#             profile = UserProfile(image=request.FILES["user_image"])
+#             profile.save()
+#             return HttpResponseRedirect("/profiles")
+
+#         return render(request, "prof_create_profile.html",{
+#             "form":submitted_form
+#         })
