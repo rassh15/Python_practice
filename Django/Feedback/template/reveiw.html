@@ -1,27 +1,22 @@
-<!DOCTYPE html>
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Review</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/static/styless.css">
-    </head>
-    <body>
-        <form action='/' method='POST'>
-            {% csrf_token %}
+{% extends 'base.html' %}
+{% block title %}Review{% endblock title %} 
+{% block content %}
 
-            {% for field in form %}
+<form action='/' method='POST'>
+    {% csrf_token %}
 
-            <div class='form-control {% if field.errors %}errors{% endif %}'>
-                {{ field.label_tag }}
-                {{ field }}
-                {{ field.errors }}
-            
-            {% endfor %}
-            <button type="submit">Send</button>
-        </form>
-    </body>
-</html>  
+    {% for field in form %}
+
+    <div class='form-control {% if field.errors %}errors{% endif %}'>
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+    
+    {% endfor %}
+    <button type="submit">Send</button>
+</form>
+
+
+{% endblock content %}
+        

@@ -3,6 +3,8 @@ from django.shortcuts import render, HttpResponseRedirect
 from .forms import ReviewForm
 from .models import Review
 from django.views import View
+from django.views.generic.base import TemplateView
+
 # Create your views here.
 
 class ReviewView(View):
@@ -17,6 +19,6 @@ class ReviewView(View):
             form.save()
             return HttpResponseRedirect('/thank-you')
 
-        
-def thankyou(request):
-    return render(request, 'thank-you.html')    
+
+class ThankyouView(TemplateView):
+    TemplateView = 'thank-you.html'
