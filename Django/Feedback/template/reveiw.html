@@ -7,13 +7,21 @@
         <title> Review</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/static/styless.css">
     </head>
     <body>
         <form action='/' method='POST'>
             {% csrf_token %}
-            {{ form }}
+
+            {% for field in form %}
+
+            <div class='form-control {% if field.errors %}errors{% endif %}'>
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            
+            {% endfor %}
             <button type="submit">Send</button>
         </form>
     </body>
-</html> 
+</html>  
