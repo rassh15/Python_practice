@@ -28,3 +28,24 @@ class ThankyouView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['message'] = "IT works"
         return context
+
+class ReviewsListView(TemplateView):
+    template_name = 'review_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        reviews = Review.objects.all()
+        context['reviews'] = reviews
+        return context
+
+
+class SingleRView(TemplateView):
+    template_name = 'single_review.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        reviewid = kwargs["id"]
+        selected_rev = Review.objects.get(pk=reviewid)
+        context['reviews'] = selected_rev
+        return context
+
+
