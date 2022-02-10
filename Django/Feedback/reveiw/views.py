@@ -1,4 +1,5 @@
 import imp
+import re
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import ReviewForm
 from .models import Review
@@ -21,4 +22,9 @@ class ReviewView(View):
 
 
 class ThankyouView(TemplateView):
-    TemplateView = 'thank-you.html'
+    template_name = 'thank-you.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['message'] = "IT works"
+        return context
