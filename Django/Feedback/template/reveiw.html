@@ -12,9 +12,12 @@
     <body>
         <form action='/' method='POST'>
             {% csrf_token %}
+            {% if has_error %}
+            <p> This is not a valid username. Please enter correct username</p>
+            {% endif %}
             <label for='username'> Your name</lable>
             <input id='username' name='username' type="text">
             <button type="submit">Send</button>
         </form>
     </body>
-</html>
+</html> 
