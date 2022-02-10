@@ -1,3 +1,4 @@
+from msilib.schema import ListView
 import profile
 from django.shortcuts import render
 from django.views import View
@@ -5,6 +6,7 @@ from django.http import HttpResponseRedirect
 from template.prof_form import ProfileForm
 from .models import UserProfile
 from django.views.generic.edit import CreateView
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -14,6 +16,11 @@ class CreateProfileView(CreateView):
     model = UserProfile
     fields = "__all__"
     success_url = "/profiles"
+
+class ProfilesView(ListView):
+    model = UserProfile
+    template_name = "prof_user_profiles.html"
+    context_object_name = "profiles"
 
 # def store_file(file):
 #     with open("temp/image.jpg","wb+") as dest:
