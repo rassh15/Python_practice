@@ -6,6 +6,7 @@ from .models import Review
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView
+from django.views.generic import DetailView
 
 # Create your views here.
 
@@ -35,20 +36,15 @@ class ReviewsListView(ListView):
     model = Review
     context_object_name = "reviews" #by default-> object_list
 
-    def get_queryset(self):
-        base_query = super().get_queryset()
-        data = base_query.filter(rating__lt=3)
-        return data
+    # def get_queryset(self):
+    #     base_query = super().get_queryset()
+    #     data = base_query.filter(rating__lt=3)
+    #     return data
 
 
 
-class SingleRView(TemplateView):
+class SingleRView(DetailView):
     template_name = 'single_review.html'
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        reviewid = kwargs["id"]
-        selected_rev = Review.objects.get(pk=reviewid)
-        context['reviews'] = selected_rev
-        return context
-
+    model = Review
+    #access by smallcase model or object
 
