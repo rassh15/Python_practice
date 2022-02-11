@@ -21,7 +21,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=20)
     excerpt = models.CharField(max_length=200)
-    image_name = models.CharField(max_length=20)
+    image = models.ImageField(upload_to="posts",null=True)
     author = models.ForeignKey(Author, on_delete=models.SET_NULL,null=True)
     date = models.DateTimeField()
     slug = models.SlugField(unique=True)
