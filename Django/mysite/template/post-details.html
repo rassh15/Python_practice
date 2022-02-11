@@ -18,7 +18,7 @@ My Blog
             {% endfor %}
         </div>
         <article>
-            <img src="{{ post.image.url }}" alt={{identified_post.title}} />
+            <img src="{{ identified_post.image.url }}" alt={{identified_post.title}} />
             <address> By <a href='mailto:{{ identified_post.author.email_address }}'>{{identified_post.author}}</a> </address>
             <div>
                 Last updated on <time> {{identified_post.date}}</time>
