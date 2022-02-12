@@ -30,3 +30,11 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} {self.author}"
+
+class Comment(models.Model):
+    user_name = models.CharField(max_length=100)
+    user_email = models.EmailField()
+    text = models.TextField(max_length=300)
+    post = models.ForeignKey(
+        "Post", 
+        related_name="comments", on_delete=models.CASCADE)
